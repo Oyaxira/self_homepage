@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Microsoft YaHei', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.link-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+    object-fit: contain;
+    border-radius: 15px;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.link-card:hover img {
+    transform: scale(1.1);
+}
+
+.link-card span {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;         /* 调整容器宽度 */
+        margin: 10px;       /* 减小边距 */
+        padding: 15px;      /* 减小内边距 */
+    }
+
+    .grid {
+        grid-template-columns: 1fr;  /* 移动端单列显示 */
+        gap: 15px;          /* 减小间距 */
+        padding: 10px;      /* 减小内边距 */
+    }
+
+    .link-card {
+        padding: 15px;      /* 减小卡片内边距 */
+    }
+
+    h1 {
+        font-size: 24px;    /* 调整标题大小 */
+        margin: 10px 0;     /* 调整标题边距 */
+    }
+}
+
+/* 超小屏幕适配 */
+@media screen and (max-width: 320px) {
+    .container {
+        width: 100%;
+        margin: 5px;
+        padding: 10px;
+    }
+
+    .link-card img {
+        width: 48px;        /* 稍微缩小图标 */
+        height: 48px;
+    }
+
+    .link-card span {
+        font-size: 14px;    /* 缩小字体 */
+    }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>我的主页</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="title"></h1>
+    <div class="grid" id="links-container">
+      <!-- 链接将通过 JavaScript 动态添加 -->
+    </div>
+  </div>
+  <script>
+    fetch('config.json')
+      .then(response => response.json())
+      .then(config => {
+        document.title = config.title;
+        document.getElementById('title').textContent = config.title;
+        document.body.style.backgroundImage = `url(${config.background})`;
+
+        const container = document.getElementById('links-container');
+        config.links.forEach(link => {
+          const linkElement = document.createElement('a');
+          linkElement.href = link.url;
+          linkElement.className = 'link-card';
+          linkElement.target = "_blank";
+          linkElement.rel = "noopener noreferrer";
+
+          const img = document.createElement('img');
+          img.src = link.icon;
+          img.alt = link.name;
+
+          const name = document.createElement('span');
+          name.textContent = link.name;
+
+          linkElement.appendChild(img);
+          linkElement.appendChild(name);
+          container.appendChild(linkElement);
+        });
+      });
+  </script>
+</body>
+
+</html>
